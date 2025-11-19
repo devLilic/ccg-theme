@@ -1,11 +1,20 @@
-    </main>
+</main>
 
-    <footer class="flex-0 bg-slate-100 px-4 py-2">
-        <div class="container mx-auto text-center">
-            <p class="text-xs">Currently in <strong><?php echo (IS_VITE_DEVELOPMENT) ? "development" : "production" ?></strong> mode.</p>
-        </div>
-    </footer>
+<footer class="border-t border-slate-200 bg-white mt-8">
+    <div class="container mx-auto px-4 py-6 text-sm text-slate-500 flex flex-col md:flex-row items-center justify-between gap-3">
+        <span>&copy; <?php echo date('Y'); ?> Calatorii Cu Gust</span>
+        <nav>
+            <?php
+            wp_nav_menu([
+                    'theme_location' => 'footer',
+                    'container' => false,
+                    'menu_class' => 'flex gap-4',
+            ]);
+            ?>
+        </nav>
+    </div>
+</footer>
 
-<?php wp_footer() ?>
+<?php wp_footer(); ?>
 </body>
 </html>

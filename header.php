@@ -1,24 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html <?php language_attributes(); ?>>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php wp_head() ?>
+    <meta charset="<?php bloginfo('charset'); ?>"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <?php wp_head(); ?>
 </head>
-<body <?php body_class('flex flex-col h-screen') ?>>
-<?php wp_body_open(); ?>
+<body <?php body_class('bg-slate-50'); ?>>
 
-    <header class="flex-0 bg-slate-100 px-4 border shadow-md">
-        <div class="max-w-screen-lg mx-auto flex justify-between items-center min-h-[40px]">
-            <div class="">
-                <a href="<?php echo home_url() ?>">Logo</a>
-            </div>
-            <div>
-                <?php echo wp_nav_menu() ?>
-            </div>
-        </div>
-    </header>
+<header class="border-b border-slate-200 bg-white">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+        <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center gap-2">
+            <!-- aici vei pune logo-ul CCG -->
+            <span class="font-semibold text-lg text-ccg-primary">
+                Calatorii cu Gust
+            </span>
+        </a>
 
-    <main class="flex-grow px-4 py-4">
+        <nav class="hidden md:block">
+            <?php
+            wp_nav_menu([
+                    'theme_location' => 'primary',
+                    'container' => false,
+                    'menu_class' => 'flex gap-6 text-sm font-medium text-slate-700',
+            ]);
+            ?>
+        </nav>
+    </div>
+</header>
 
+<main class="min-h-screen">
