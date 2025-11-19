@@ -1,12 +1,27 @@
-<?php get_header() ?>
+<?php
+/**
+ * Page Template
+ */
 
-    <article class="max-w-screen-lg mx-auto ">
+get_header();
+?>
 
-        <h1 class="text-3xl font-semibold"><?php the_title() ?></h1>
-        <div class="mt-4">
-            <?php the_content() ?>
-        </div>
+<?php
+get_template_part( 'template-parts/layout/hero-inner', null, [
+        'title' => get_the_title(),
+]);
+?>
 
-    </article>
+<div class="container mx-auto px-4 py-10">
+    <div class="max-w-3xl mx-auto">
 
-<?php get_footer() ?>
+        <?php
+        while ( have_posts() ) : the_post();
+            get_template_part( 'template-parts/content/content', 'page' );
+        endwhile;
+        ?>
+
+    </div>
+</div>
+
+<?php get_footer(); ?>

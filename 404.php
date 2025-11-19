@@ -1,12 +1,24 @@
-<?php get_header() ?>
+<?php
+/**
+ * 404 Page
+ */
 
-    <div class="grid place-content-center h-full text-center">
+get_header();
+?>
 
-        <h1 class="text-5xl font-semibold">404</h1>
-        <div class="mt-4">
-            <h2>Not found</h2>
-        </div>
+<div class="container mx-auto px-4 py-20 text-center">
 
-    </div>
+    <h1 class="text-5xl font-bold text-ccg-primary mb-4">404</h1>
 
-<?php get_footer() ?>
+    <p class="text-slate-600 mb-6">
+        Pagina pe care o cauți nu există.
+    </p>
+
+    <a href="<?php echo esc_url( home_url('/') ); ?>"
+       class="inline-flex items-center bg-ccg-primary text-white px-5 py-2 rounded-xl hover:bg-ccg-primaryDark text-sm font-semibold">
+        Mergi la pagina principală
+    </a>
+
+</div>
+
+<?php get_footer(); ?>

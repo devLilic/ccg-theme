@@ -25,3 +25,212 @@ body{
 body.admin-bar {
     max-height: calc(100vh - 32px);
 }
+/* ======================= */
+/*  MENIU DESKTOP          */
+/* ======================= */
+
+.ccg-primary-menu {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.ccg-primary-menu > li {
+    position: relative;
+}
+
+/* Linkuri top-level */
+.ccg-primary-menu > li > a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #334155; /* slate-700 */
+    padding-bottom: 0.35rem;
+    transition: color 0.2s ease;
+}
+
+/* Linie subtilă la hover */
+.ccg-primary-menu > li > a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: #ab2b36;
+    transition: width 0.25s ease;
+}
+
+/* Săgeată pentru item cu submeniu */
+.ccg-primary-menu > .menu-item-has-children > a::after {
+    content: "▾";
+    font-size: 0.7rem;
+    margin-left: 6px;
+    color: #64748b; /* slate-500 */
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* Hover top-level */
+.ccg-primary-menu > li:hover > a {
+    color: #ab2b36;
+}
+
+.ccg-primary-menu > li:hover > a::before {
+    width: 100%;
+}
+
+.ccg-primary-menu > .menu-item-has-children:hover > a::after {
+    transform: rotate(180deg);
+    color: #ab2b36;
+}
+
+/* Submenu container */
+.ccg-primary-menu .sub-menu {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: 0.5rem;
+    min-width: 220px;
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    border: 1px solid #e2e8f0; /* slate-200 */
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    padding: 0.5rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+    z-index: 40;
+}
+
+/* Show submenu on hover */
+.ccg-primary-menu > .menu-item-has-children:hover > .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Linkuri din submenu (desktop) */
+.ccg-primary-menu .sub-menu li a {
+    display: block;
+    padding: 0.45rem 1rem;
+    font-size: 0.875rem;
+    color: #475569; /* slate-600 */
+    white-space: nowrap;
+    transition: background-color 0.15s ease, color 0.15s ease, padding-left 0.15s ease;
+}
+
+.ccg-primary-menu .sub-menu li a:hover {
+    background-color: #f8fafc; /* slate-50 */
+    color: #ab2b36;
+    padding-left: 1.25rem;
+}
+
+/* Sub-submeniuri (extra) */
+.ccg-primary-menu .sub-menu .menu-item-has-children > .sub-menu {
+    left: 100%;
+    top: 0;
+    margin-left: 0.25rem;
+}
+
+/* ======================= */
+/*  MENIU MOBIL (OPTIMIZAT) */
+/* ======================= */
+
+/* Lista principală */
+.ccg-mobile-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* ITEM GENERAL (fără/submenu) */
+.ccg-mobile-menu > li {
+    background-color: #f8fafc; /* slate-50 */
+    border-radius: 0.85rem;
+    padding: 0; /* control full */
+    overflow: hidden;
+}
+
+/* Wrapper pentru link + buton */
+.ccg-mobile-link-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 1rem;
+}
+
+/* Link top-level ORICE item (nu doar cu submenu) */
+.ccg-mobile-menu-link,
+.ccg-mobile-menu > li > a {
+    flex: 1;
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #0f172a; /* slate-900 */
+    text-decoration: none;
+}
+
+/* Hover pe mobil (la tap feedback) */
+.ccg-mobile-menu > li:active {
+    background-color: #f1f5f9; /* slate-100 */
+}
+
+/* Submenu toggle (+ / –) */
+.ccg-mobile-submenu-toggle {
+    margin-left: 0.75rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    border: 1px solid #e2e8f0;
+    font-size: 1.1rem;
+    line-height: 1;
+    color: #64748b;
+    background-color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+/* Când submenu e deschis */
+.ccg-mobile-submenu-toggle[aria-expanded="true"] {
+    background-color: #ab2b36;
+    color: #ffffff;
+}
+
+/* Submenu container */
+.ccg-mobile-submenu {
+    max-height: 0;
+    overflow: hidden;
+    border-left: 2px solid #e2e8f0;
+    margin-left: 1rem;
+    transition: max-height 0.25s ease;
+}
+
+/* Submenu deschis */
+.ccg-mobile-submenu--open {
+    max-height: 400px;
+}
+
+/* Linkuri din submenu */
+.ccg-mobile-submenu li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    color: #475569;
+}
+
+.ccg-mobile-submenu li a:hover {
+    color: #ab2b36;
+}
+
+
+/* Ascunde săgeata desktop pe mobil */
+@media (max-width: 767px) {
+    .ccg-primary-menu > .menu-item-has-children > a::after {
+        content: "";
+    }
+}
