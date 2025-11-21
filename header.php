@@ -3,6 +3,9 @@
 <head>
     <meta charset="<?php bloginfo('charset'); ?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
     <?php wp_head(); ?>
 </head>
 
@@ -27,7 +30,7 @@
                 <img
                         src="<?php echo esc_url($logo_url); ?>"
                         alt="<?php bloginfo('name'); ?>"
-                        class="h-16 w-auto md:h-16 object-contain"
+                        class="h-10 w-auto md:h-10 object-contain"
                 >
             <?php else : ?>
                 <img
@@ -52,7 +55,6 @@
             ]);
             ?>
         </nav>
-
 
         <button id="ccg-search-open"
                 class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-300 hover:border-ccg-primary group shadow-sm hover:shadow transition">

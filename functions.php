@@ -63,7 +63,6 @@ add_filter('nav_menu_css_class', function ($classes, $item, $args)
     return $classes;
 }, 10, 3);
 
-
 /**
  * Vite + Tailwind integration (din repo)
  */
@@ -71,4 +70,4 @@ require get_template_directory() . '/inc/inc.vite.php';
 //
 //// Main switch to get frontend assets from a Vite dev server OR from production built folder
 //// it is recommended to move it into wp-config.php
-//define('IS_VITE_DEVELOPMENT', true);
+define('IS_VITE_DEVELOPMENT', true);

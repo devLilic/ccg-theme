@@ -250,3 +250,19 @@ body.admin-bar {
 .pagination .current {
     @apply bg-ccg-primary text-white border-ccg-primary;
 }
+
+
+/* ------- PARTNERS MARQUEE ------- */
+
+@keyframes ccg-marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.ccg-marquee-track {
+    animation: ccg-marquee 25s linear infinite;
+}
+
+.ccg-marquee-track:hover {
+    animation-play-state: paused; /* optional */
+}

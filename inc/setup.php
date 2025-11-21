@@ -18,6 +18,7 @@ if ( ! function_exists( 'ccg_theme_setup' ) ) :
         add_theme_support( 'post-thumbnails' );
         set_post_thumbnail_size( 1568, 9999 );
 
+
         // HTML5 markup pentru elemente standard
         add_theme_support( 'html5', array(
             'search-form',
@@ -46,6 +47,8 @@ if ( ! function_exists( 'ccg_theme_setup' ) ) :
         // Suport pentru imagini wide și alignfull în Gutenberg
         add_theme_support( 'align-wide' );
 
+
+
         // Meniuri
         register_nav_menus( array(
             'primary' => __( 'Meniu principal', 'calatoriicugust' ),
@@ -56,3 +59,5 @@ if ( ! function_exists( 'ccg_theme_setup' ) ) :
 endif;
 
 add_action( 'after_setup_theme', 'ccg_theme_setup' );
+add_theme_support('post-thumbnails');
+add_image_size('ccg-partner', 400, 400, false);
