@@ -17,7 +17,7 @@
     <div class="container mx-auto px-4 py-4 flex items-center justify-between">
 
         <!-- Logo -->
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center gap-2">
+        <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center gap-2 ">
 
             <?php if (has_custom_logo()) : ?>
                 <?php
@@ -27,7 +27,7 @@
                 <img
                         src="<?php echo esc_url($logo_url); ?>"
                         alt="<?php bloginfo('name'); ?>"
-                        class="h-10 w-auto md:h-12 object-contain"
+                        class="h-16 w-auto md:h-16 object-contain"
                 >
             <?php else : ?>
                 <img
@@ -52,6 +52,33 @@
             ]);
             ?>
         </nav>
+
+
+        <button id="ccg-search-open"
+                class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-300 hover:border-ccg-primary group shadow-sm hover:shadow transition">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 class="h-6 w-6 text-slate-600 group-hover:text-ccg-primary ">
+                <path d="M11 4a7 7 0 1 0 0 14a7 7 0 0 0 0-14zM21 21l-4.35-4.35"/>
+            </svg>
+            <span class="text-sm text-slate-600 group-hover:text-ccg-primary ">Caută</span>
+        </button>
+
+
+        <div id="ccg-search-panel" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-50 hidden p-6">
+            <div class="max-w-xl mx-auto mt-20">
+                <?php get_search_form(); ?>
+                <button id="ccg-search-close" class="mt-6 block mx-auto text-slate-600 hover:text-ccg-primary">
+                    Închide ✕
+                </button>
+            </div>
+        </div>
+
 
         <!-- Buton meniu mobil -->
         <button

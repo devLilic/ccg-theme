@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const openMenu = () => {
         if (!menu || !overlay) return;
-
         menu.classList.remove('-translate-y-full');
+        menu.classList.add('mt-[72px]');
         overlay.classList.remove('hidden');
         setTimeout(() => overlay.classList.remove('opacity-0'), 10);
 
@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!menu || !overlay) return;
 
         menu.classList.add('-translate-y-full');
+        menu.classList.remove('mt-[72px]');
+
         overlay.classList.add('opacity-0');
         setTimeout(() => overlay.classList.add('hidden'), 300);
 
@@ -121,18 +123,29 @@ document.addEventListener('DOMContentLoaded', () => {
             link.classList.add('ccg-mobile-menu-link');
         });
     }
+
+
+    const searchOpen = document.getElementById('ccg-search-open');
+    const searchClose = document.getElementById('ccg-search-close');
+    const searchPanel = document.getElementById('ccg-search-panel');
+
+    if (searchOpen && searchPanel) {
+        searchOpen.addEventListener('click', () => {
+            searchPanel.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+            closeMenu()
+        });
+    }
+
+    if (searchClose && searchPanel) {
+        searchClose.addEventListener('click', () => {
+            searchPanel.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        });
+    }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    const slides = document.querySelectorAll("#ccg-hero-slider .ccg-slide");
-    if (!slides.length) return;
 
-    let current = 0;
-    slides[0].classList.add("opacity-100");
 
-    setInterval(() => {
-        slides[current].classList.remove("opacity-100");
-        current = (current + 1) % slides.length;
-        slides[current].classList.add("opacity-100");
-    }, 5000);
 });

@@ -35,13 +35,13 @@ if (!$hero_circle) {
 
 
     <!-- Overlay pentru lizibilitate -->
-    <div class="absolute inset-0 bg-gradient-to-br from-white/90 via-white/85 to-white/70"></div>
+    <div class="absolute inset-0 bg-white/30 backdrop-blur-sm"></div>
 
     <div class="container mx-auto px-4 py-20 md:py-28 relative z-10">
         <div class="grid gap-12 md:grid-cols-2 items-center">
 
             <!-- LEFT TEXT -->
-            <div>
+            <div class="bg-white/40 backdrop-blur-sm p-2 rounded-2xl shadow-lg ">
                 <span class="inline-flex items-center rounded-full bg-ccg-primary/10 px-3 py-1 text-xs font-semibold text-ccg-primary mb-4">
                     Călătorii • Gastronomie • Tradiții
                 </span>
@@ -52,56 +52,58 @@ if (!$hero_circle) {
 
                 <p class="text-slate-600 text-base md:text-lg mb-6 max-w-xl">
                     Locuri autentice, evenimente locale și rute turistice – toate într-o singură platformă.
+                    <br>
+                    De la sate pitorești și mănăstiri istorice, până la trasee turistice, lacuri, vinării și experiențe culturale — toate se regăsesc în poveștile noastre.
                 </p>
 
                 <!-- SEARCH BOX -->
-                <form class="bg-white rounded-2xl shadow-sm p-3 md:p-4 mb-4 flex flex-col md:flex-row gap-3">
-                    <div class="flex-1">
-                        <label for="ccg-search" class="sr-only">Căutare</label>
-                        <input
-                                id="ccg-search"
-                                type="text"
-                                class="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-ccg-primary focus:ring-ccg-primary"
-                                placeholder="Caută locuri, evenimente, rute..."
-                        >
-                    </div>
-
-                    <div>
-                        <label for="ccg-type" class="sr-only">Tip</label>
-                        <select
-                                id="ccg-type"
-                                class="w-full md:w-40 rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-ccg-primary focus:ring-ccg-primary"
-                        >
-                            <option>Toate</option>
-                            <option>Locuri</option>
-                            <option>Evenimente</option>
-                            <option>Rute</option>
-                        </select>
-                    </div>
-
-                    <button
-                            type="submit"
-                            class="inline-flex items-center justify-center rounded-xl bg-ccg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-ccg-primaryDark transition"
-                    >
-                        Caută
-                    </button>
-                </form>
+<!--                <form class="bg-white rounded-2xl shadow-sm p-3 md:p-4 mb-4 flex flex-col md:flex-row gap-3">-->
+<!--                    <div class="flex-1">-->
+<!--                        <label for="ccg-search" class="sr-only">Căutare</label>-->
+<!--                        <input-->
+<!--                                id="ccg-search"-->
+<!--                                type="text"-->
+<!--                                class="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-ccg-primary focus:ring-ccg-primary"-->
+<!--                                placeholder="Caută locuri, evenimente, rute..."-->
+<!--                        >-->
+<!--                    </div>-->
+<!---->
+<!--                    <div>-->
+<!--                        <label for="ccg-type" class="sr-only">Tip</label>-->
+<!--                        <select-->
+<!--                                id="ccg-type"-->
+<!--                                class="w-full md:w-40 rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-ccg-primary focus:ring-ccg-primary"-->
+<!--                        >-->
+<!--                            <option>Toate</option>-->
+<!--                            <option>Locuri</option>-->
+<!--                            <option>Evenimente</option>-->
+<!--                            <option>Rute</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+<!---->
+<!--                    <button-->
+<!--                            type="submit"-->
+<!--                            class="inline-flex items-center justify-center rounded-xl bg-ccg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-ccg-primaryDark transition"-->
+<!--                    >-->
+<!--                        Caută-->
+<!--                    </button>-->
+<!--                </form>-->
 
                 <!-- QUICK LINKS -->
-                <div class="flex flex-wrap gap-2 text-sm">
-                    <a href="#"
-                       class="inline-flex px-3 py-1.5 rounded-full bg-white/90 border border-slate-200 hover:border-ccg-primary hover:text-ccg-primary">
-                        Locuri turistice
-                    </a>
-                    <a href="#"
-                       class="inline-flex px-3 py-1.5 rounded-full bg-white/90 border border-slate-200 hover:border-ccg-primary hover:text-ccg-primary">
-                        Evenimente
-                    </a>
-                    <a href="#"
-                       class="inline-flex px-3 py-1.5 rounded-full bg-white/90 border border-slate-200 hover:border-ccg-primary hover:text-ccg-primary">
-                        Rute turistice
-                    </a>
-                </div>
+<!--                <div class="flex flex-wrap gap-2 text-sm">-->
+<!--                    <a href="#"-->
+<!--                       class="inline-flex px-3 py-1.5 rounded-full bg-white/90 border border-slate-200 hover:border-ccg-primary hover:text-ccg-primary">-->
+<!--                        Locuri turistice-->
+<!--                    </a>-->
+<!--                    <a href="#"-->
+<!--                       class="inline-flex px-3 py-1.5 rounded-full bg-white/90 border border-slate-200 hover:border-ccg-primary hover:text-ccg-primary">-->
+<!--                        Evenimente-->
+<!--                    </a>-->
+<!--                    <a href="#"-->
+<!--                       class="inline-flex px-3 py-1.5 rounded-full bg-white/90 border border-slate-200 hover:border-ccg-primary hover:text-ccg-primary">-->
+<!--                        Rute turistice-->
+<!--                    </a>-->
+<!--                </div>-->
             </div>
 
             <!-- RIGHT CIRCLE IMAGE -->

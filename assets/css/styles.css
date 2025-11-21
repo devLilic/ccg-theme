@@ -234,3 +234,19 @@ body.admin-bar {
         content: "";
     }
 }
+
+
+
+.pagination {
+    @apply flex justify-center gap-2 mt-8;
+}
+.pagination li {
+    @apply inline-block;
+}
+.pagination a,
+.pagination span {
+    @apply px-3 py-2 rounded-lg border border-slate-300 text-slate-700 text-sm hover:bg-slate-100;
+}
+.pagination .current {
+    @apply bg-ccg-primary text-white border-ccg-primary;
+}

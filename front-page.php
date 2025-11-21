@@ -7,7 +7,7 @@
 get_header();
 
 // HERO
-get_template_part( 'template-parts/layout/hero-home' );
+get_template_part('template-parts/layout/hero-home');
 ?>
 
 <div class="bg-slate-50">
@@ -28,7 +28,7 @@ get_template_part( 'template-parts/layout/hero-home' );
                     </p>
                 </div>
 
-                <a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>"
+                <a href="<?php echo get_permalink(get_option('page_for_posts')); ?>"
                    class="hidden md:inline-flex text-sm font-medium text-ccg-primary hover:text-ccg-primaryDark">
                     Vezi toate articolele →
                 </a>
@@ -38,26 +38,83 @@ get_template_part( 'template-parts/layout/hero-home' );
 
                 <?php
                 // Query pentru ultimele 6 articole
-                $ccg_latest = new WP_Query([
-                        'post_type'      => 'post',
-                        'posts_per_page' => 6,
-                ]);
 
-                if ( $ccg_latest->have_posts() ) :
-                    while ( $ccg_latest->have_posts() ) :
+                $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+
+                $args = [
+                        'post_type'      => 'post',
+                        'posts_per_page' => 9,   // câte articole vrei
+                        'paged'          => $paged,
+                ];
+
+                $ccg_latest = new WP_Query($args);
+
+
+                if ($ccg_latest->have_posts()) :
+                    while ($ccg_latest->have_posts()) :
                         $ccg_latest->the_post();
-                        get_template_part( 'template-parts/content/content', 'excerpt' );
+                        get_template_part('template-parts/content/content', 'excerpt');
                     endwhile;
                     wp_reset_postdata();
                 else :
                     echo '<p class="text-slate-500">Nu există articole disponibile.</p>';
                 endif;
                 ?>
-
             </div>
+            <?php
+            $links = paginate_links([
+                    'base'         => trailingslashit( get_pagenum_link(1) ) . '%_%',
+                    'format'       => 'page/%#%/',
+                    'total'        => $ccg_latest->max_num_pages,
+                    'current'      => $paged,
+                    'mid_size'     => 2,
+                    'prev_text'    => '«',
+                    'next_text'    => '»',
+                    'type'         => 'array',
+            ]);
+
+            if ( ! empty( $links ) ) :
+                ?>
+                <ul class="flex justify-center gap-2 mt-10">
+                    <?php foreach ( $links as $link ) : ?>
+
+                        <li class="page-item">
+                            <?php
+                            // Current page (span.current)
+                            if ( strpos( $link, 'current' ) !== false ) :
+
+                                echo str_replace(
+                                        'page-numbers',
+                                        'page-numbers w-10 h-10 flex items-center justify-center rounded-full bg-ccg-primary text-white font-semibold shadow',
+                                        $link
+                                );
+
+                            // Regular page link <a>
+                            elseif ( strpos( $link, 'page-numbers' ) !== false ) :
+
+                                echo str_replace(
+                                        'page-numbers',
+                                        'page-numbers w-10 h-10 flex items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 font-medium hover:bg-slate-100 hover:border-ccg-primary hover:text-ccg-primary transition',
+                                        $link
+                                );
+
+                            // Ellipsis "…"
+                            else :
+
+                                echo '<span class="page-numbers w-10 h-10 flex items-center justify-center text-slate-500">…</span>';
+
+                            endif;
+                            ?>
+                        </li>
+
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+
+
 
             <div class="mt-4 md:hidden">
-                <a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>"
+                <a href="<?php echo get_permalink(get_option('page_for_posts')); ?>"
                    class="inline-flex text-sm font-medium text-ccg-primary hover:text-ccg-primaryDark">
                     Vezi toate articolele →
                 </a>
@@ -121,7 +178,8 @@ get_template_part( 'template-parts/layout/hero-home' );
                         Primește idei de călătorie și articole noi
                     </h2>
                     <p class="text-rose-50/90 max-w-xl text-sm md:text-base">
-                        Abonează-te ca să primești periodic articole cu trasee, evenimente și locuri frumoase din Moldova.
+                        Abonează-te ca să primești periodic articole cu trasee, evenimente și locuri frumoase din
+                        Moldova.
                     </p>
                 </div>
 
