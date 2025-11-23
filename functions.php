@@ -63,6 +63,51 @@ add_filter('nav_menu_css_class', function ($classes, $item, $args)
     return $classes;
 }, 10, 3);
 
+function add_meta_tags() {
+    global $post;
+    if ( is_single() ) {
+        $meta = strip_tags( $post->post_content );
+        $meta = strip_shortcodes( $meta );
+        $meta = str_replace( array("\n", "\r", "\t"), ' ', $meta );
+        $meta = substr( $meta, 0, 130 );
+        $keywords = get_the_category( $post->ID );
+        $metakeywords = '';
+        foreach ( $keywords as $keyword ) {
+            $metakeywords .= $keyword->cat_name . ", ";
+        }
+
+        echo '<meta name="description" content="' . $meta . '" />' . "\n";
+        echo '<meta name="keywords" content="' . $metakeywords . '" />' . "\n";
+        echo '<meta property="og:title" content="'.get_the_title($post).'"/>'."\n";
+        echo '<meta property="og:type" content="website"/>'."\n";
+        echo '<meta property="og:url" content="'.get_permalink($post).'"/>'."\n";
+        echo '<meta property="og:image" content="'.get_the_post_thumbnail_url().'"/>'."\n";
+        echo '<meta property="og:description" content="'.$meta.'"/>';
+    }
+}
+add_action( 'wp_head', 'add_meta_tags' , 2 );
+
+function ccg_enqueue_leaflet() {
+    if (is_singular('place')) {
+        wp_enqueue_style(
+            'leaflet-css',
+            'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css',
+            [],
+            null
+        );
+
+        wp_enqueue_script(
+            'leaflet-js',
+            'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',
+            [],
+            null,
+            true
+        );
+    }
+}
+add_action('wp_enqueue_scripts', 'ccg_enqueue_leaflet');
+
+
 /**
  * Vite + Tailwind integration (din repo)
  */
@@ -70,4 +115,4 @@ require get_template_directory() . '/inc/inc.vite.php';
 //
 //// Main switch to get frontend assets from a Vite dev server OR from production built folder
 //// it is recommended to move it into wp-config.php
-define('IS_VITE_DEVELOPMENT', false);
+define('IS_VITE_DEVELOPMENT', true);

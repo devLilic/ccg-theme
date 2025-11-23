@@ -7,6 +7,9 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <?php wp_head(); ?>
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Cormorant+Infant:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body <?php body_class('bg-slate-50 text-slate-900'); ?>>

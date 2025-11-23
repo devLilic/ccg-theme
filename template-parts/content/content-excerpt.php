@@ -20,7 +20,7 @@
             <?php echo get_the_date(); ?>
         </div>
 
-        <h2 class="text-lg font-semibold mb-2 leading-tight">
+        <h2 class="text-2xl font-bold mb-2 leading-tight">
             <a href="<?php the_permalink(); ?>" class="hover:text-ccg-primary">
                 <?php the_title(); ?>
             </a>

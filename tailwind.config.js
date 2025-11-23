@@ -17,6 +17,11 @@ module.exports = {
     ],
     theme: {
         extend: {
+            fontFamily: {
+                sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+                serif: ['Cormorant Garamond', 'serif'],
+                serifSoft: ['Cormorant Infant', 'serif'],
+            },
             colors: {
                 ccg: {
                     "primary": "#ab2b36",

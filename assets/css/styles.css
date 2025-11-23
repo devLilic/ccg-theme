@@ -18,13 +18,32 @@
 */
 
 body{
-    @apply bg-slate-50 text-slate-900
+    @apply bg-slate-50 text-slate-900;
+    @apply font-sans;
 }
 
 /* admin bar fix */
 body.admin-bar {
     max-height: calc(100vh - 32px);
 }
+
+/* TITLURI PRINCIPALE */
+h1, h2 {
+    @apply font-serif;
+}
+
+/* TITLURI SECUNDARE / CARD TITLES / SUBHEADERS */
+h3, h4, .card-title {
+    @apply font-serifSoft;
+}
+
+.content-body p{
+    @apply text-justify;
+    @apply my-6
+}
+
+
+
 /* ======================= */
 /*  MENIU DESKTOP          */
 /* ======================= */
