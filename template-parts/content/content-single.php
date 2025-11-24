@@ -25,5 +25,5 @@
     <div class="content-body text-slate-700 leading-relaxed">
         <?php the_content(); ?>
     </div>
-
+<?php ccg_gallery_render( get_the_ID() ); ?>
 </article>
