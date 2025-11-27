@@ -1,0 +1,22 @@
+#ccg-event-map {
+    width: 100%;
+    height: 380px;
+    border: 2px solid #dcdcdc;
+    border-radius: 6px;
+}
+
+#ccg_event_map_search {
+    margin-bottom: 8px;
+}
+.ccg-place-list {
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 6px;
+}
+.ccg-place-list li {
+    cursor: pointer;
+    padding: 4px;
+}
+.ccg-place-list li:hover {
+    background: #eee;
+}

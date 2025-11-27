@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use CCG\Core\Meta\MetaBox;
 use CCG\Core\Helpers\Sanitizer;
 
+
 /**
  * Înregistrăm metabox-ul prin ccg-core.
  */

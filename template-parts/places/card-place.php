@@ -1,4 +1,30 @@
 <?php
+// Iconițe pentru opțiuni
+$duration_icons = [
+        '30min' => '⏱️',
+        '1h'    => '⏱️',
+        '2h'    => '⏱️',
+        '3h'    => '⏱️',
+        'half_day' => '🕒',
+        'full_day' => '🕓',
+];
+
+$access_icons = [
+        'car'   => '🚗',
+        'bus'   => '🚌',
+        'train' => '🚆',
+        'boat'  => '⛵',
+        'bike'  => '🚴‍♂️',
+        'walk'  => '🚶‍♂️',
+];
+
+$price_icons = [
+        'free' => '🆓',
+        'paid'  => '💸',
+        'moderate' => '💰',
+        'premium' => '💎',
+];
+
 $post_id = get_the_ID();
 
 // ----- Image -----
@@ -28,9 +54,26 @@ $cat_label = $cats ? $cats[0]->name : false;
 $short = get_post_meta($post_id, '_ccg_place_short_description', true);
 
 // ----- Meta small icons -----
+//$duration = get_post_meta($post_id, '_ccg_place_visit_duration', true);
+//$price    = get_post_meta($post_id, '_ccg_place_price_range', true);
+//$access   = get_post_meta($post_id, '_ccg_place_access', true);
+
+// Meta values
+//$duration = get_post_meta($post_id, '_ccg_place_visit_duration', true);
+//$access   = get_post_meta($post_id, '_ccg_place_access', true);
+//$price    = get_post_meta($post_id, '_ccg_place_price_range', true);
+
+// Importăm opțiunile din plugin (sunt globale)
+$duration_options = ccg_get_place_duration_options();
+$access_options   = ccg_get_place_access_options();
+$price_options    = ccg_get_place_price_options();
+
 $duration = get_post_meta($post_id, '_ccg_place_visit_duration', true);
+$access_str   = get_post_meta($post_id, '_ccg_place_access', true);
 $price    = get_post_meta($post_id, '_ccg_place_price_range', true);
-$access   = get_post_meta($post_id, '_ccg_place_access', true);
+
+$access_values = array_filter( array_map( 'trim', explode( ',', $access_str ) ) );
+
 ?>
 <a href="<?php echo esc_url(get_permalink()); ?>"
    class="block bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
@@ -61,23 +104,38 @@ $access   = get_post_meta($post_id, '_ccg_place_access', true);
 
         <!-- Small meta icons row -->
         <div class="flex items-center gap-3 text-xs text-slate-600 mb-4">
-            <?php if ($price): ?>
+
+            <?php if ($price && isset($price_options[$price])) : ?>
                 <span class="flex items-center gap-1">
-                    💰 <?php echo esc_html($price); ?>
+                    <span class="text-lg"><?= $price_icons[$price] ?? '💰' ?></span>
+                    <span><?= esc_html($price_options[$price]) ?></span>
                 </span>
             <?php endif; ?>
 
-            <?php if ($duration): ?>
+            <?php if ($duration && isset($duration_options[$duration])) : ?>
                 <span class="flex items-center gap-1">
-                    ⏱ <?php echo esc_html($duration); ?>
+                    <span class="text-lg"><?= $duration_icons[$duration] ?? '⏱️' ?></span>
+                    <span><?= esc_html($duration_options[$duration]) ?></span>
                 </span>
             <?php endif; ?>
 
-            <?php if ($access): ?>
-                <span class="flex items-center gap-1">
-                    🚗
+            <?php if (!empty($access_values)) : ?>
+                <div class="flex items-center gap-3 flex-wrap">
+                    <?php foreach ($access_values as $access_key) : ?>
+                        <?php if (isset($access_options[$access_key])) : ?>
+                            <span class="flex items-center gap-1 text-sm text-slate-600">
+                    <span class="text-lg">
+                        <?= $access_icons[$access_key] ?? '🚗' ?>
+                    </span>
+                    <span><?= esc_html($access_options[$access_key]) ?></span>
                 </span>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
             <?php endif; ?>
+
+
+
         </div>
 
         <span class="inline-flex items-center text-ccg-primary font-semibold text-sm">

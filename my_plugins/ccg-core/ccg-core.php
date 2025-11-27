@@ -7,6 +7,11 @@
  * Text Domain: ccg-core
  */
 
+use CCG\Core\Meta\MetaBoxManager;
+use CCG\Core\Plugin;
+use CCG\Core\PostTypes\PostTypeRegistrar;
+use CCG\Core\Taxonomies\TaxonomyRegistrar;
+
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
@@ -27,10 +32,10 @@ CCG\Core\Autoloader::register();
 /**
  * Helper global pentru a obține instanța principală de plugin.
  *
- * @return \CCG\Core\Plugin
+ * @return Plugin
  */
 function ccg_core() {
-    return \CCG\Core\Plugin::instance();
+    return Plugin::instance();
 }
 
 // Bootstrapping
@@ -53,19 +58,19 @@ if ( ! function_exists( 'ccg_core_register_post_type' ) ) {
      * @param string $module Slugul modulului (ex: 'ccg-partners')
      */
     function ccg_core_register_post_type( $post_type, array $args, $module = '' ) {
-        \CCG\Core\PostTypes\PostTypeRegistrar::queue_post_type( $post_type, $args, $module );
+        PostTypeRegistrar::queue_post_type( $post_type, $args, $module );
     }
 }
 
 if ( ! function_exists( 'ccg_core_register_taxonomy' ) ) {
     function ccg_core_register_taxonomy( $taxonomy, $object_type, array $args, $module = '' ) {
-        \CCG\Core\Taxonomies\TaxonomyRegistrar::queue_taxonomy( $taxonomy, $object_type, $args, $module );
+        TaxonomyRegistrar::queue_taxonomy( $taxonomy, $object_type, $args, $module );
     }
 }
 
 if ( ! function_exists( 'ccg_core_register_metabox' ) ) {
     function ccg_core_register_metabox( \CCG\Core\Meta\MetaBox $metabox ) {
-        \CCG\Core\Meta\MetaBoxManager::register_metabox( $metabox );
+        MetaBoxManager::register_metabox( $metabox );
     }
 }
 

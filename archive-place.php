@@ -8,62 +8,62 @@
         </p>
 
         <!-- FILTERS -->
-        <form method="get" class="bg-white p-4 rounded-xl shadow mb-8 grid grid-cols-1 md:grid-cols-4 gap-4">
-
+<!--        <form method="get" class="bg-white p-4 rounded-xl shadow mb-8 grid grid-cols-1 md:grid-cols-4 gap-4">-->
+<!---->
             <!-- Region -->
-            <div>
-                <label class="text-sm font-semibold mb-1 block">Regiune</label>
+<!--            <div>-->
+<!--                <label class="text-sm font-semibold mb-1 block">Regiune</label>-->
                 <?php
-                wp_dropdown_categories([
-                        'taxonomy'   => 'place_region',
-                        'name'       => 'region',
-                        'show_option_all' => 'Toate',
-                        'class'      => 'w-full border rounded-lg p-2',
-                        'selected'   => isset($_GET['region']) ? $_GET['region'] : ''
-                ]);
+//                wp_dropdown_categories([
+//                        'taxonomy'   => 'place_region',
+//                        'name'       => 'region',
+//                        'show_option_all' => 'Toate',
+//                        'class'      => 'w-full border rounded-lg p-2',
+//                        'selected'   => isset($_GET['region']) ? $_GET['region'] : ''
+//                ]);
                 ?>
-            </div>
-
+<!--            </div>-->
+<!---->
             <!-- Category -->
-            <div>
-                <label class="text-sm font-semibold mb-1 block">Categorie</label>
+<!--            <div>-->
+<!--                <label class="text-sm font-semibold mb-1 block">Categorie</label>-->
                 <?php
-                wp_dropdown_categories([
-                        'taxonomy'   => 'place_category',
-                        'name'       => 'category',
-                        'show_option_all' => 'Toate',
-                        'class'      => 'w-full border rounded-lg p-2',
-                        'selected'   => isset($_GET['category']) ? $_GET['category'] : ''
-                ]);
-                ?>
-            </div>
-
+//                wp_dropdown_categories([
+//                        'taxonomy'   => 'place_category',
+//                        'name'       => 'category',
+//                        'show_option_all' => 'Toate',
+//                        'class'      => 'w-full border rounded-lg p-2',
+//                        'selected'   => isset($_GET['category']) ? $_GET['category'] : ''
+//                ]);
+//                ?>
+<!--            </div>-->
+<!---->
             <!-- Tourism Zone -->
-            <div>
-                <label class="text-sm font-semibold mb-1 block">Zonă turistică</label>
+<!--            <div>-->
+<!--                <label class="text-sm font-semibold mb-1 block">Zonă turistică</label>-->
                 <?php
-                wp_dropdown_categories([
-                        'taxonomy'   => 'tourism_zone',
-                        'name'       => 'tourism_zone',
-                        'show_option_all' => 'Toate',
-                        'class'      => 'w-full border rounded-lg p-2',
-                        'selected'   => isset($_GET['tourism_zone']) ? $_GET['tourism_zone'] : ''
-                ]);
+//                wp_dropdown_categories([
+//                        'taxonomy'   => 'tourism_zone',
+//                        'name'       => 'tourism_zone',
+//                        'show_option_all' => 'Toate',
+//                        'class'      => 'w-full border rounded-lg p-2',
+//                        'selected'   => isset($_GET['tourism_zone']) ? $_GET['tourism_zone'] : ''
+//                ]);
                 ?>
-            </div>
-
+<!--            </div>-->
+<!---->
             <!-- Themes -->
-            <div>
-                <label class="text-sm font-semibold mb-1 block">Teme</label>
-                <input type="text" name="themes" placeholder="ex: natura, istorie"
-                       value="<?php echo isset($_GET['themes']) ? esc_attr($_GET['themes']) : ''; ?>"
-                       class="w-full border rounded-lg p-2">
-            </div>
-
-            <button class="md:col-span-4 bg-ccg-primary text-white rounded-lg px-4 py-2 hover:bg-ccg-primaryDark transition">
-                Aplică filtre
-            </button>
-        </form>
+<!--            <div>-->
+<!--                <label class="text-sm font-semibold mb-1 block">Teme</label>-->
+<!--                <input type="text" name="themes" placeholder="ex: natura, istorie"-->
+<!--                       value="--><?php //echo isset($_GET['themes']) ? esc_attr($_GET['themes']) : ''; ?><!--"-->
+<!--                       class="w-full border rounded-lg p-2">-->
+<!--            </div>-->
+<!---->
+<!--            <button class="md:col-span-4 bg-ccg-primary text-white rounded-lg px-4 py-2 hover:bg-ccg-primaryDark transition">-->
+<!--                Aplică filtre-->
+<!--            </button>-->
+<!--        </form>-->
 
         <!-- LOOP -->
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
