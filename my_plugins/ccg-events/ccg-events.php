@@ -44,6 +44,8 @@ function ccg_events_include_files() {
 
     require_once CCG_EVENTS_PATH . 'api/events-rest.php';
 
+
+
 //    require_once CCG_EVENTS_PATH . 'includes/ccg-events-seed.php';
 }
 add_action( 'plugins_loaded', 'ccg_events_include_files', 1 );

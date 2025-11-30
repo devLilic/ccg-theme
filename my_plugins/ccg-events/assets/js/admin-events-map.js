@@ -16,6 +16,10 @@ jQuery(function($){
         maxZoom: 18,
         attribution: '&copy; OpenStreetMap'
     }).addTo(map);
+    // === FIX IMPORTANT Leaflet ===
+    setTimeout(function () {
+        map.invalidateSize(true);
+    }, 300);
 
     // MARKER
     let marker = L.marker([lat, lng], {draggable: true}).addTo(map);

@@ -22,7 +22,11 @@ require get_template_directory() . '/inc/enqueue.php';
  */
 require get_template_directory() . '/inc/template-tags.php';
 
+require get_template_directory() . '/inc/template-tags-events.php';
+
+
 require get_template_directory() . '/inc/customizer.php';
+
 
 
 
