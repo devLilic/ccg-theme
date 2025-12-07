@@ -37,32 +37,32 @@ function ccg_places_register_taxonomies() {
     );
 
     // 2. REGIUNE (raion / ATU)
-    $region_labels = [
-        'name'              => __( 'Regiuni', 'ccg-places' ),
-        'singular_name'     => __( 'Regiune', 'ccg-places' ),
-        'search_items'      => __( 'Caută Regiuni', 'ccg-places' ),
-        'all_items'         => __( 'Toate Regiunile', 'ccg-places' ),
-        'edit_item'         => __( 'Editează Regiune', 'ccg-places' ),
-        'update_item'       => __( 'Actualizează Regiune', 'ccg-places' ),
-        'add_new_item'      => __( 'Adaugă Regiune Nouă', 'ccg-places' ),
-        'new_item_name'     => __( 'Nume Regiune Nouă', 'ccg-places' ),
-        'menu_name'         => __( 'Regiuni', 'ccg-places' ),
-    ];
-
-    $region_args = [
-        'labels'            => $region_labels,
-        'public'            => true,
-        'hierarchical'      => true,
-        'show_admin_column' => true,
-        'show_in_rest'      => true,
-    ];
-
-    ccg_core_register_taxonomy(
-        'place_region',
-        [ 'place' ],
-        $region_args,
-        'ccg-places'
-    );
+//    $region_labels = [
+//        'name'              => __( 'Regiuni', 'ccg-places' ),
+//        'singular_name'     => __( 'Regiune', 'ccg-places' ),
+//        'search_items'      => __( 'Caută Regiuni', 'ccg-places' ),
+//        'all_items'         => __( 'Toate Regiunile', 'ccg-places' ),
+//        'edit_item'         => __( 'Editează Regiune', 'ccg-places' ),
+//        'update_item'       => __( 'Actualizează Regiune', 'ccg-places' ),
+//        'add_new_item'      => __( 'Adaugă Regiune Nouă', 'ccg-places' ),
+//        'new_item_name'     => __( 'Nume Regiune Nouă', 'ccg-places' ),
+//        'menu_name'         => __( 'Regiuni', 'ccg-places' ),
+//    ];
+//
+//    $region_args = [
+//        'labels'            => $region_labels,
+//        'public'            => true,
+//        'hierarchical'      => true,
+//        'show_admin_column' => true,
+//        'show_in_rest'      => true,
+//    ];
+//
+//    ccg_core_register_taxonomy(
+//        'place_region',
+//        [ 'place' ],
+//        $region_args,
+//        'ccg-places'
+//    );
 
     // 3. ZONĂ TURISTICĂ
     $zone_labels = [
