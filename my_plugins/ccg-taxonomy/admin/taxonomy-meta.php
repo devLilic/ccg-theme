@@ -161,6 +161,46 @@ function ccg_taxmgr_render_metabox( $post ) {
             </div>
         </div>
 
+        <div class="ccg-field-group">
+            <label><strong><?php esc_html_e( 'Importare termeni (SEED avansat)', 'ccg-taxonomy' ); ?></strong></label>
+
+            <p class="description">
+                <?php esc_html_e( 'Introdu un array PHP (simplu sau multidimensional). Acesta va popula taxonomia selectată.', 'ccg-taxonomy' ); ?>
+            </p>
+
+            <textarea name="ccgtax_seed_array" rows="10" style="width:100%;font-family:monospace;"><?php
+                echo esc_textarea( get_post_meta( $post->ID, '_ccgtax_seed_array', true ) );
+                ?></textarea>
+
+            <p class="description">
+                <?php esc_html_e( 'Exemplu valid:', 'ccg-taxonomy' ); ?>
+            </p>
+
+            <pre style="background:#f5f5f5;padding:10px;border-radius:4px;">
+                    [
+                      "Nord" => [
+                          "Bălți",
+                          "Edineț",
+                          "Soroca"
+                      ],
+                      "Centru" => ["Chișinău", "Orhei"],
+                      "Sud"
+                    ]
+            </pre>
+
+            <p>
+                <label>
+                    <input type="checkbox" name="ccgtax_seed_replace" value="1">
+                    <?php esc_html_e( 'Șterge termenii existenți înainte de import', 'ccg-taxonomy' ); ?>
+                </label>
+            </p>
+
+            <button type="submit" class="button button-primary" name="ccgtax_run_seed" value="1">
+                <?php esc_html_e( 'Execută SEED pentru taxonomie', 'ccg-taxonomy' ); ?>
+            </button>
+        </div>
+
+
         <p class="description">
             <?php esc_html_e( 'După salvare, această taxonomie va fi înregistrată și vei putea adăuga termeni prin submeniul din "Taxonomy Manager".', 'ccg-taxonomy' ); ?>
         </p>
@@ -230,5 +270,48 @@ function ccg_taxmgr_save_taxonomy_meta( $post_id ) {
         update_post_meta( $post_id, '_ccgtax_post_types', $csv );
     } else {
         delete_post_meta( $post_id, '_ccgtax_post_types' );
+    }
+
+    // Save SEED array
+    if ( isset( $_POST['ccgtax_seed_array'] ) ) {
+        update_post_meta( $post_id, '_ccgtax_seed_array', $_POST['ccgtax_seed_array']  );
+    }
+
+    // If seed is triggered:
+    if ( isset( $_POST['ccgtax_run_seed'] ) && '1' === $_POST['ccgtax_run_seed'] ) {
+
+        $seed_code = get_post_meta( $post_id, '_ccgtax_seed_array', true );
+        $taxonomy_slug = get_post_meta( $post_id, '_ccgtax_slug', true );
+        if ( ! $taxonomy_slug ) {
+            $taxonomy_slug = sanitize_title( get_post_field( 'post_title', $post_id ) );
+        }
+
+        // Parse array
+        $seed_array = [];
+        if ( ! empty( $seed_code ) ) {
+            try {
+                $seed_array = eval( "return $seed_code;" );
+            } catch ( Exception $e ) {
+                // Avoid fatal errors
+                error_log( "Seed parsing error for taxonomy $taxonomy_slug" );
+                return;
+            }
+        }
+
+        if ( is_array( $seed_array ) ) {
+
+            if ( isset( $_POST['ccgtax_seed_replace'] ) ) {
+                // DELETE all terms before re-seeding
+                $terms = get_terms([
+                        'taxonomy' => $taxonomy_slug,
+                        'hide_empty' => false
+                ]);
+                foreach ( $terms as $t ) {
+                    wp_delete_term( $t->term_id, $taxonomy_slug );
+                }
+            }
+
+            ccg_taxmgr_execute_seed_array( $taxonomy_slug, $seed_array );
+        }
     }
 }

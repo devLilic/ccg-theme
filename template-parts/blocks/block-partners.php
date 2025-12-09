@@ -9,7 +9,7 @@ $partners = new WP_Query([
 if (!$partners->have_posts()) return;
 ?>
 
-<section class="py-10 bg-white border-t border-slate-200">
+<section class="py-10 bg-slate-300">
     <div class="w-full mx-auto ">
         <div class="container mx-auto px-4">
 

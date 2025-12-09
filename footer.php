@@ -1,6 +1,6 @@
 </main>
 <?php get_template_part('template-parts/blocks/block', 'partners'); ?>
-<footer class="bg-white border-t border-slate-200 mt-8">
+<footer class="bg-gradient-to-br from-[#0e1a2b] via-[#3c2240] to-[#ab2b36]">
     <div class="container mx-auto px-4 py-6 text-sm text-slate-500 flex flex-col md:flex-row items-center justify-between gap-3">
         <span>&copy; <?php echo date('Y'); ?> Calatorii Cu Gust</span>
 

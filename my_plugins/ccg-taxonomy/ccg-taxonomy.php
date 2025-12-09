@@ -37,6 +37,8 @@ function ccg_taxmgr_include_files() {
     require_once CCG_TAXMGR_PATH . 'post-types/ccg-taxonomy-cpt.php';
     require_once CCG_TAXMGR_PATH . 'admin/taxonomy-meta.php';
     require_once CCG_TAXMGR_PATH . 'register/taxonomy-register.php';
+    require_once CCG_TAXMGR_PATH . 'admin/taxonomy-seed-array.php';
+
 }
 add_action( 'plugins_loaded', 'ccg_taxmgr_include_files', 1 );
 
