@@ -82,47 +82,47 @@ function ccg_places_seed_taxonomies() {
     /* -------------------------------------------------------
      * 2) REGIUNI (place_region)
      * ----------------------------------------------------- */
-    $regions = [
-        'Chișinău','Bălți','Anenii Noi','Basarabeasca','Briceni','Cahul','Cantemir','Călărași',
-        'Căușeni','Cimișlia','Criuleni','Dondușeni','Drochia','Dubăsari','Edineț','Fălești',
-        'Florești','Glodeni','Hîncești','Ialoveni','Leova','Nisporeni','Ocnița','Orhei',
-        'Rezina','Rîșcani','Sîngerei','Soroca','Strășeni','Șoldănești','Ștefan Vodă','Taraclia',
-        'Telenești','Ungheni','ATU Găgăuzia','Transnistria'
-    ];
-
-    foreach ( $regions as $region ) {
-        $insert_term( $region, $region_tax );
-    }
+//    $regions = [
+//        'Chișinău','Bălți','Anenii Noi','Basarabeasca','Briceni','Cahul','Cantemir','Călărași',
+//        'Căușeni','Cimișlia','Criuleni','Dondușeni','Drochia','Dubăsari','Edineț','Fălești',
+//        'Florești','Glodeni','Hîncești','Ialoveni','Leova','Nisporeni','Ocnița','Orhei',
+//        'Rezina','Rîșcani','Sîngerei','Soroca','Strășeni','Șoldănești','Ștefan Vodă','Taraclia',
+//        'Telenești','Ungheni','ATU Găgăuzia','Transnistria'
+//    ];
+//
+//    foreach ( $regions as $region ) {
+//        $insert_term( $region, $region_tax );
+//    }
 
     /* -------------------------------------------------------
      * 3) ZONE TURISTICE (tourism_zone)
      * ----------------------------------------------------- */
-    $zones = [
-        'Macro-zone' => [
-            'Nord','Centru','Sud'
-        ],
-        'Zone naturale' => [
-            'Codrii','Valea Nistrului','Valea Prutului','Rudi–Arionești','Saharna–Țipova',
-            'Orheiul Vechi','Prutul de Jos / Beleu','Colinele Tigheciului','Sudul arid – Bugeac'
-        ],
-        'Zone vitivinicole' => [
-            'Codru','Ștefan Vodă','Valul lui Traian'
-        ],
-        'Zone culturale' => [
-            'Zona monastică centrală','Zona Orhei–Butuceni–Trebujeni',
-            'Zona Soroca','Zona Găgăuză'
-        ],
-        'Zone speciale' => [
-            'Transnistria (turism alternativ)'
-        ],
-    ];
-
-    foreach ( $zones as $parent => $children ) {
-        $parent_id = $insert_term( $parent, $zone_tax );
-        foreach ( $children as $child ) {
-            $insert_term( $child, $zone_tax, $parent_id );
-        }
-    }
+//    $zones = [
+//        'Macro-zone' => [
+//            'Nord','Centru','Sud'
+//        ],
+//        'Zone naturale' => [
+//            'Codrii','Valea Nistrului','Valea Prutului','Rudi–Arionești','Saharna–Țipova',
+//            'Orheiul Vechi','Prutul de Jos / Beleu','Colinele Tigheciului','Sudul arid – Bugeac'
+//        ],
+//        'Zone vitivinicole' => [
+//            'Codru','Ștefan Vodă','Valul lui Traian'
+//        ],
+//        'Zone culturale' => [
+//            'Zona monastică centrală','Zona Orhei–Butuceni–Trebujeni',
+//            'Zona Soroca','Zona Găgăuză'
+//        ],
+//        'Zone speciale' => [
+//            'Transnistria (turism alternativ)'
+//        ],
+//    ];
+//
+//    foreach ( $zones as $parent => $children ) {
+//        $parent_id = $insert_term( $parent, $zone_tax );
+//        foreach ( $children as $child ) {
+//            $insert_term( $child, $zone_tax, $parent_id );
+//        }
+//    }
 
     /* -------------------------------------------------------
      * 4) TEME (place_theme)

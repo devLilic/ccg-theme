@@ -65,32 +65,32 @@ function ccg_places_register_taxonomies() {
 //    );
 
     // 3. ZONĂ TURISTICĂ
-    $zone_labels = [
-        'name'              => __( 'Zone turistice', 'ccg-places' ),
-        'singular_name'     => __( 'Zonă turistică', 'ccg-places' ),
-        'search_items'      => __( 'Caută Zone', 'ccg-places' ),
-        'all_items'         => __( 'Toate Zonele', 'ccg-places' ),
-        'edit_item'         => __( 'Editează Zonă', 'ccg-places' ),
-        'update_item'       => __( 'Actualizează Zonă', 'ccg-places' ),
-        'add_new_item'      => __( 'Adaugă Zonă Nouă', 'ccg-places' ),
-        'new_item_name'     => __( 'Nume Zonă Nouă', 'ccg-places' ),
-        'menu_name'         => __( 'Zone turistice', 'ccg-places' ),
-    ];
-
-    $zone_args = [
-        'labels'            => $zone_labels,
-        'public'            => true,
-        'hierarchical'      => true,
-        'show_admin_column' => true,
-        'show_in_rest'      => true,
-    ];
-
-    ccg_core_register_taxonomy(
-        'tourism_zone',
-        [ 'place' ],
-        $zone_args,
-        'ccg-places'
-    );
+//    $zone_labels = [
+//        'name'              => __( 'Zone turistice', 'ccg-places' ),
+//        'singular_name'     => __( 'Zonă turistică', 'ccg-places' ),
+//        'search_items'      => __( 'Caută Zone', 'ccg-places' ),
+//        'all_items'         => __( 'Toate Zonele', 'ccg-places' ),
+//        'edit_item'         => __( 'Editează Zonă', 'ccg-places' ),
+//        'update_item'       => __( 'Actualizează Zonă', 'ccg-places' ),
+//        'add_new_item'      => __( 'Adaugă Zonă Nouă', 'ccg-places' ),
+//        'new_item_name'     => __( 'Nume Zonă Nouă', 'ccg-places' ),
+//        'menu_name'         => __( 'Zone turistice', 'ccg-places' ),
+//    ];
+//
+//    $zone_args = [
+//        'labels'            => $zone_labels,
+//        'public'            => true,
+//        'hierarchical'      => true,
+//        'show_admin_column' => true,
+//        'show_in_rest'      => true,
+//    ];
+//
+//    ccg_core_register_taxonomy(
+//        'tourism_zone',
+//        [ 'place' ],
+//        $zone_args,
+//        'ccg-places'
+//    );
 
     // 4. TEME (tag-uri)
     $themes_labels = [

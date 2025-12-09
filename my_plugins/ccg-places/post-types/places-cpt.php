@@ -37,7 +37,6 @@ function ccg_places_register_cpt() {
         // 🔥 AICI SE REZOLVĂ PROBLEMA
         'taxonomies'         => [
             'place_category',
-            'place_region',
             'tourism_zone',
             'place_theme'
         ],

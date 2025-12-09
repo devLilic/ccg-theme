@@ -7,6 +7,7 @@
  * Text Domain: ccg-core
  */
 
+use CCG\Core\Meta\MetaBox;
 use CCG\Core\Meta\MetaBoxManager;
 use CCG\Core\Plugin;
 use CCG\Core\PostTypes\PostTypeRegistrar;
@@ -69,7 +70,7 @@ if ( ! function_exists( 'ccg_core_register_taxonomy' ) ) {
 }
 
 if ( ! function_exists( 'ccg_core_register_metabox' ) ) {
-    function ccg_core_register_metabox( \CCG\Core\Meta\MetaBox $metabox ) {
+    function ccg_core_register_metabox( MetaBox $metabox ) {
         MetaBoxManager::register_metabox( $metabox );
     }
 }
