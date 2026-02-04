@@ -4,26 +4,33 @@
  */
 ?>
 
-<article <?php post_class('prose prose-slate max-w-none'); ?>>
+<article <?php post_class('mx-auto max-w-3xl px-4 py-10 md:py-14'); ?>>
 
     <?php if ( has_post_thumbnail() ) : ?>
-        <div class="mb-6">
+        <div class="mb-7 overflow-hidden rounded-3xl shadow-sm">
             <?php the_post_thumbnail( 'large', [
-                    'class' => 'rounded-xl w-full h-auto'
+                'class' => 'w-full h-auto'
             ] ); ?>
         </div>
     <?php endif; ?>
 
-    <div class="text-sm text-slate-500 mb-4">
-        Publicat la <?php echo get_the_date(); ?>
+    <div class="mb-3 text-sm text-slate-500">
+        Publicat la <?php echo esc_html( get_the_date('j.m.Y') ); ?>
     </div>
 
-    <h1 class="text-3xl font-bold mb-6">
+    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 mb-8">
         <?php the_title(); ?>
     </h1>
 
-    <div class="content-body text-slate-700 leading-relaxed">
+    <!-- CONTENT -->
+    <div class="ccg-prose">
         <?php the_content(); ?>
     </div>
-<?php ccg_gallery_render( get_the_ID() ); ?>
+
+    <?php if ( function_exists('ccg_gallery_render') ) : ?>
+        <div class="mt-10">
+            <?php ccg_gallery_render( get_the_ID() ); ?>
+        </div>
+    <?php endif; ?>
+
 </article>

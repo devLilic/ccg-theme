@@ -1,3 +1,5 @@
+import typography from '@tailwindcss/typography'
+
 module.exports = {
     content: [
         // https://tailwindcss.com/docs/content-configuration
@@ -30,5 +32,5 @@ module.exports = {
             }
         }
     },
-    plugins: []
+    plugins: [typography]
 }
