@@ -119,13 +119,13 @@ if (!empty($gallery_ids)) {
             $gallery_ids[0],
             'large',
             false,
-            ['class' => 'w-full h-64 md:h-80 lg:h-96 object-cover']
+            ['class' => 'w-full h-full object-cover object-center']
     );
 } elseif (has_post_thumbnail()) {
     $hero_img_html = get_the_post_thumbnail(
             $post_id,
             'large',
-            ['class' => 'w-full h-64 md:h-80 lg:h-96 object-cover']
+            ['class' => 'w-full h-full object-cover object-center']
     );
 }
 ?>
@@ -133,7 +133,7 @@ if (!empty($gallery_ids)) {
 <main class="bg-slate-50 min-h-screen">
 
     <!-- HERO -->
-    <section class="relative bg-slate-900 text-white">
+    <section class="relative bg-slate-900 min-h-[70vh] md:min-h-[75vh] lg:min-h-[80vh] overflow-hidden text-white">
         <?php if ($hero_img_html) : ?>
             <div class="absolute inset-0 overflow-hidden">
                 <?php echo $hero_img_html; ?>

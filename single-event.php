@@ -110,12 +110,7 @@ while ( have_posts() ) :
             <!-- LEFT COLUMN -->
             <div class="space-y-8">
 
-                <!-- GALLERY -->
-                <?php if ( function_exists( 'ccg_gallery_render' ) ) : ?>
-                    <section>
-                        <?php ccg_gallery_render( get_the_ID() ); ?>
-                    </section>
-                <?php endif; ?>
+
 
                 <!-- LONG DESCRIPTION -->
                 <section class="prose max-w-none prose-slate">
@@ -168,6 +163,13 @@ while ( have_posts() ) :
                             }
                             ?>
                         </div>
+                    </section>
+                <?php endif; ?>
+
+                <!-- GALLERY -->
+                <?php if ( function_exists( 'ccg_gallery_render' ) ) : ?>
+                    <section>
+                        <?php ccg_gallery_render( get_the_ID() ); ?>
                     </section>
                 <?php endif; ?>
 

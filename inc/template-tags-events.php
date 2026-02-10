@@ -160,5 +160,6 @@ function ccg_events_get_region_name( $post_id ) {
  * Localitatea din meta
  */
 function ccg_events_get_locality( $post_id ) {
-    return get_post_meta( $post_id, '_ccg_event_locality', true );
+    $locality = get_post_meta( $post_id, '_ccg_event_locality', true );
+    return $locality ? $locality : '';
 }
